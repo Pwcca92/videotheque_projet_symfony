@@ -44,6 +44,16 @@ class Movie
      */
     private $categories;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $realisator;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $actor;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
@@ -125,6 +135,30 @@ class Movie
         if ($this->categories->removeElement($category)) {
             $category->removeName($this);
         }
+
+        return $this;
+    }
+
+    public function getRealisator(): ?string
+    {
+        return $this->realisator;
+    }
+
+    public function setRealisator(string $realisator): self
+    {
+        $this->realisator = $realisator;
+
+        return $this;
+    }
+
+    public function getActor(): ?string
+    {
+        return $this->actor;
+    }
+
+    public function setActor(string $actor): self
+    {
+        $this->actor = $actor;
 
         return $this;
     }
