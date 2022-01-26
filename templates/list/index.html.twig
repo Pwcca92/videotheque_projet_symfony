@@ -6,19 +6,19 @@
 
 <div class="container">
   <!-- Titre de la page-->
-  <div class="row">
+  <div class="row py-4">
     <h1>Tous les les films</h1>
   </div>
   <!-- rang avec 1 à 6 colonnes-->
-  <div class="row">
+  <div class="row py-3">
   {% for movie in movies %}
     <div class="col-12 col-md-2">
-      <div class="card m-1">
-        <img src="{{ movie.getPosterPath }}" class="card-img-top" alt="">
-        <div class="card-body">
-          <p class="card-title">{{ movie.title }}</p>
-          <a href="#" class="text-secondary text-decoration-none">Voir plus</a>
-        </div>
+      <div class="card-text m-1">
+        <img src="{{ movie.getPosterPath }}" class="card-img-top img-responsive" style="width:'' height:''" alt="">
+        <div class="card-text pt-2">
+          <!--<p>{{ movie.title }}</p>-->
+          <a href="{{ path('detail',{'id':movie.id})}}" class="text-dark text-decoration-none">{{ movie.title }}</a>
+       </div>
       </div>
     </div>
     {% endfor %}
