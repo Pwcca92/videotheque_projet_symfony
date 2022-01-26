@@ -2,19 +2,31 @@
 
 namespace App\Controller;
 
+use App\Repository\MovieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DetailController extends AbstractController
 {
-    /**
-     * @Route("/detail", name="detail")
-     */
-    public function index(): Response
+
+    private $Repository;
+
+    public function __construct(MovieRepository $MovieRepository)
     {
+        $this->Repository=$MovieRepository;
+    }
+
+    /**
+     * @Route("/list/{id}", name="detail")
+     */
+    public function index($id): Response
+    {
+        $details = $this->Repository->findById($id);
+
         return $this->render('detail/index.html.twig', [
             'controller_name' => 'DetailController',
+            'details' => $details,
         ]);
     }
 }
