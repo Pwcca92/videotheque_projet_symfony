@@ -9,18 +9,20 @@
   <div class="row py-4">
     <h1>Tous les les films</h1>
   </div>
-  
+  <!-- rang avec 1 ou 6 colonnes-->
   <div class="row py-3">
   {% for movie in movies %}
     <div class="col-12 col-md-2">
-      <div class="card-text m-1">
-        <img src="{{ movie.getPosterPath }}" class="card-img-top img-responsive" style="width:'' height:''" alt="">
+    <a href="{{ path('detail',{'id':movie.id})}}" class="card-link text-dark text-decoration-none">
+    <div class="card-text m-1">
+        <img src="{{ movie.getPosterPath }}" href="{{ path('detail',{'id':movie.id})}}" class="card-img-top img-responsive" style="width:'' height:''" alt="">
         <div class="card-text pt-2">
-          <!--<p>{{ movie.title }}</p>-->
-          <a href="{{ path('detail',{'id':movie.id})}}" class="text-dark text-decoration-none">{{ movie.title }}</a>
+          <p>{{ movie.title }}</p>
+          <!--<a href="{{ path('detail',{'id':movie.id})}}" class="text-dark text-decoration-none">{{ movie.title }}</a>-->
        </div>
       </div>
-    </div>
+      </a>
+      </div>
     {% endfor %}
   </div>
 </div>
